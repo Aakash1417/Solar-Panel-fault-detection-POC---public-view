@@ -4,7 +4,7 @@
 
 At Taifa, we were initially focused on providing solar panel detection images. However, I saw an opportunity to enhance this service by detecting faulty cells within the panels. Inspired by the high costs and resource demands of existing market solutions, I proposed developing an in-house solution.
 
-I created a proof of concept (POC) and presented it to my boss, highlighting its potential to save costs and improve efficiency. This POC led to the development of a fully functional product that is now in production, though it remains confidential.
+I created a proof of concept (POC) and presented it to my manager, highlighting its potential to save costs and improve efficiency. This POC led to the development of a fully functional product that is now in production, though it remains confidential.
 
 ## Overview
 
@@ -19,7 +19,7 @@ The training dataset used for this project is confidential and proprietary to Ta
 The repository is structured as follows:
 
 -   `callbacks.py`: Contains custom callback functions for the Keras model training process.
--   `config_full_yolo_fault_1.json`: Configuration file specifying model parameters, training settings, and dataset paths.
+-   `yolo_config.json`: Configuration file specifying model parameters, training settings, and dataset paths.
 -   `gen_anchors.py`: Script for generating anchor boxes based on the training dataset.
 -   `generator.py`: Defines a data generator for training the model with batch processing.
 -   `predict.py`: Script for performing predictions on new images using the trained model.
@@ -27,7 +27,6 @@ The repository is structured as follows:
 -   `utils/`: Directory containing utility functions and classes for data preprocessing, model evaluation, and other tasks.
 -   `voc.py`: Script for parsing annotations in the VOC format.
 -   `yolo.py`: Contains the definition of the YOLO model and related functions.
--   `yolo3_one_file_to_detect_them_all.py`: A simplified version of the YOLO model implementation in a single file.
 
 ## Getting Started
 
@@ -41,5 +40,5 @@ Training the Model
 To train the model, run the train.py script with the path to the configuration file as an argument:
 
 ```sh
-python train.py -c config_full_yolo_fault_1.json
+python train.py -c yolo_config.json
 ```
