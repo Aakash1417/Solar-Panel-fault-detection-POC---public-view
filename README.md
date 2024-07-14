@@ -10,6 +10,11 @@ I created a proof of concept (POC) and presented it to my manager, highlighting 
 
 The goal of this POC is to demonstrate the feasibility of using a YOLO V3 CNN models to accurately identify and classify faulty solar panel cells from thermal drone images. This approach aims to improve the efficiency and reliability of solar panel maintenance and fault detection processes.
 
+<p>
+  <img src="https://github.com/Aakash1417/Solar-Panel-fault-detection-POC---public-view/blob/main/input/site_3_example.jpg" width="300" alt="Smaple thermal image"/>
+  <img src="https://github.com/Aakash1417/Solar-Panel-fault-detection-POC---public-view/blob/main/output/site_3_example.jpg" width="300" alt="Annotated Smaple thermal image with fault cells marked"/> 
+</p>
+
 ## Dataset
 
 The training dataset used for this project is confidential and proprietary to Taifa Engineering. Due to the sensitive nature of the data, it is not included in this repository. The dataset comprises images of solar panels with various fault conditions, annotated for object detection tasks.
