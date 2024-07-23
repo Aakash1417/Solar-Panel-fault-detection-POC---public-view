@@ -1,16 +1,10 @@
 # Solar Panel Fault Detection - Proof of Concept (POC)
 
-## Inspiration
-
-At Taifa, one of our projects initially only provided solar panel thermal images, with no analytics or power loss report. However, I saw an opportunity to enhance this service by detecting faulty cells within the panels. Inspired by the high costs and resource demands of existing market solutions, I proposed developing an in-house solution.
-
-I created a proof of concept (POC) and presented it to my manager, highlighting its potential to save costs and improve efficiency. This POC led to the development of a fully functional product that is now in production, though it remains confidential.
-
 ## Overview
 
-The goal of this POC is to demonstrate the feasibility of using a YOLO V3 CNN models to accurately identify and classify faulty solar panel cells from thermal drone images. This approach aims to improve the efficiency and reliability of solar panel maintenance and fault detection processes.
+The goal of this POC is to demonstrate the feasibility of using a YOLO V3 CNN models to accurately identify and classify faulty solar panel cells from thermal drone images. This approach aims to improve the efficiency and reliability of solar panel maintenance and fault detection processes. Checkout the outputs detected here: [outputs](https://github.com/Aakash1417/Solar-Panel-fault-detection-POC---public-view/blob/main/output/)
 
-The CNN architecture here is based on the YOLOv3 model, which is designed for object detection tasks. It uses a series of convolutional layers with batch normalization and leaky ReLU activations, organized in blocks with skip connections. The architecture includes three detection heads at different scales, which helps in detecting objects of various sizes effectively. I chose to built the architecture this way becasue:
+The CNN architecture here is based on the YOLOv3 model, which is designed for object detection tasks. It uses a series of convolutional layers with batch normalization and leaky ReLU activations, organized in blocks with skip connections [1]. The architecture includes three detection heads at different scales, which helps in detecting objects of various sizes effectively. I chose to built the architecture this way because:
 
 -   Multi-Scale Detection: By having three different detection heads, the model can capture features at different resolutions, improving its ability to detect small and large objects.
 
@@ -20,9 +14,16 @@ The CNN architecture here is based on the YOLOv3 model, which is designed for ob
 
 -   Custom YOLO Layer: This layer processes the output to match the format required for calculating the loss and making predictions, handling the complexity of bounding box prediction and class probabilities.
 
+## Limitations
+
+As of now, there are certain limitations in the approach:
+
+-   Overlapping Cells: There can be overlap, especially if there are overlapping cells in the set of images. Therefore, all images must be hand-picked to avoid overlap.
+-   Detection Precision: Not all defects are detected, only some. The model achieves a precision score of around ~72%.
+
 <p>
-  <img src="https://github.com/Aakash1417/Solar-Panel-fault-detection-POC---public-view/blob/main/input/site_3_example.jpg" width="300" alt="Smaple thermal image"/>
-  <img src="https://github.com/Aakash1417/Solar-Panel-fault-detection-POC---public-view/blob/main/output/site_3_example.jpg" width="300" alt="Annotated Smaple thermal image with fault cells marked"/> 
+  <img src="https://github.com/Aakash1417/Solar-Panel-fault-detection-POC---public-view/blob/main/input/site_1_image_32.jpg" width="300" alt="Sample thermal image"/>
+  <img src="https://github.com/Aakash1417/Solar-Panel-fault-detection-POC---public-view/blob/main/output/site_1_image_32.jpg" width="300" alt="Annotated Sample thermal image with fault cells marked"/> 
 </p>
 
 ## Dataset
@@ -60,5 +61,5 @@ python train.py -c yolo_config.json
 
 ## References
 
--   [Solar panel defect detection design based on YOLO v5 algorithm](https://www.sciencedirect.com/science/article/pii/S2405844023060346)
--   [A multi-stage model based on YOLOv3 for defect detection in PV panels based on IR and visible imaging by unmanned aerial vehicle](https://www.sciencedirect.com/science/article/abs/pii/S0960148122005079)
+-   [1] [Solar panel defect detection design based on YOLO v5 algorithm](https://www.sciencedirect.com/science/article/pii/S2405844023060346)
+-   [2] [A multi-stage model based on YOLOv3 for defect detection in PV panels based on IR and visible imaging by unmanned aerial vehicle](https://www.sciencedirect.com/science/article/abs/pii/S0960148122005079)
